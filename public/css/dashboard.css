@@ -39,10 +39,11 @@ main {
     height: 88vh;
     flex-direction: row;
     position: relative;
+    background-color: #407aff;
 }
 
 .main_menu {
-    width: 250px;
+    width: 300px;
     height: 88vh;
     background-color: #407aff;
     display: flex;
@@ -95,6 +96,7 @@ main {
     overflow-y: scroll;
     display: flex;
     flex-direction: column;
+    border-top-left-radius: 30px;
 }
 
 .content_heading {
@@ -102,7 +104,7 @@ main {
     align-items: center;
     margin: 10px;
     padding: 15px 0px;
-    border-radius: 10px;
+    border-radius: 30px;
     background-color: #ffffff;
     font-size: 20px;
 }
@@ -122,5 +124,70 @@ main {
     margin: 10px;
 }
 
+/* card items  */
+.card_div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 30px;
+}
 
+.card {
+    height: auto;
+    width: 300px;
+    border-radius: 20px;
+    background-color: #ffffff;
+    margin: 20px;
+    box-shadow: 5px 5px 25px lightgrey;
+}
+
+.profile_pic {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+.profile_circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background-color: linen;
+    margin-right: 10px;
+}
+
+.loc_info {
+    margin: 10px 0px;
+    padding: 10px;
+    border-top: 2px solid lightgrey;
+}
+.loc_info h5, .loc_info h6{
+    font-size: 17px;
+    color: #407aff;
+    padding: 0;
+    margin: 5px 0px;
+}
+
+.id_details {
+    background-color: lightgray;
+    padding: 20px 10px;
+}
+
+.id_details div i.fas{
+    font-size: 25px;
+    color: #ffffff;
+}
+
+.skills_info {
+    padding: 10px;
+
+}
+
+.skills_info h5, .skills_info h6{
+    font-size: 15px;
+    margin: 5px;
+    padding: 0;
+}
 

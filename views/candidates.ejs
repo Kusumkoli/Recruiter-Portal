@@ -1,0 +1,25 @@
+<%- include('./includes/template-start.ejs') %> 
+                <div class="card_div">
+                    <% if(candidates.length>0) { %>
+                        <% for(let candidate of candidates) { %>
+                            <div class="card">
+                                <div class="profile_pic">
+                                    <div class="profile_circle"><i class="far fa-user"></i></div>
+                                    <div><%= candidate.name %></div>
+                                </div>
+                                <div class="id_details">
+                                    <div><i class="fas fa-briefcase"></i><%= candidate.experience_level %></div>
+                                    <div><i class="fas fa-address-card"></i><%= candidate.qualification %></div>
+                                </div>
+                                <div class="skills_info">
+                                    <h5>Skills: <%= candidate.skills %></h5>
+                                    <h6>Additional Skills:<%= candidate.additional_skills %></h6>
+                                </div>
+                                
+                            </div>
+                        <% } %>
+                    <% } else { %>
+                        <h3>No Recruiters!</h3>
+                    <% } %>
+                </div>
+<%- include('./includes/template-end.ejs') %>

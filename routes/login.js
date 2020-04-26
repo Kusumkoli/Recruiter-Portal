@@ -14,4 +14,6 @@ router.post('/recruiter-signin', loginController.postRSignin); // recruiter sign
 
 router.post('/am-signin', loginController.postAMSignin); //account manager sign in
 
+router.get('/dashboard', loginController.getDashboard);
+
 module.exports = router;

@@ -18,7 +18,7 @@
             <div><i class="fas fa-users"></i></div>
             <div class="profile-info-div">
                 <div><i class="fas fa-address-book"></i></div>
-                <div style="color: lightgrey"><%= am.name %></div>
+                <div style="color: lightgrey">User</div>
                 <div><i class="fas fa-chevron-down"></i></div>
             </div>
         </div>
@@ -28,13 +28,23 @@
         <div class="main_menu">
             <p>Navigation</p>
             <ul>
-                <li><i class="fas fa-archive"></i><a href="">Dashboard</a></li>
-                <li><i class="fas fa-folder"></i><a href="">Recruiters</a></li>
+                <li><i class="fas fa-archive"></i><a href="/dashboard">Dashboard</a></li>
+                <% if(role === 'account_manager') { %>
+                    <li><i class="fas fa-folder"></i><a href="/recruiters">Recruiters</a></li>
+                <% } else { %>
+                    <li><i class="fas fa-folder"></i><a href="/candidates">Candidates</a></li>
+                <% } %>
             </ul>
             <p>Job</p>
             <ul>
-                <li><i class="fas fa-align-left"></i><a href="">Received Candidates</a></li>
+                <% if(role === 'account_manager') { %>
+                    <li><i class="fas fa-align-left"></i><a href="">Received Candidates</a></li>
+                <% } %>
                 <li><i class="fas fa-archive"></i><a href="">Live Jobs</a></li>
+                <% if(role === 'recruiter') { %>
+                    <li><i class="fas fa-align-left"></i><a href="">Accepted Jobs</a></li>
+                    <li><i class="fas fa-align-left"></i><a href="">Rejected Jobs</a></li>
+                <% } %>
             </ul>
             <p>Support</p>
             <ul>

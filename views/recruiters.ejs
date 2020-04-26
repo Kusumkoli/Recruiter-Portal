@@ -1,0 +1,24 @@
+<%- include('./includes/template-start.ejs') %> 
+                <div class="card_div">
+                    <% if(recruiters.length>0) { %>
+                        <% for(let recruiter of recruiters) { %>
+                            <div class="card">
+                                <div class="profile_pic">
+                                    <div class="profile_circle"><i class="far fa-user"></i></div>
+                                    <div><%= recruiter.name %></div>
+                                </div>
+                                <div class="loc_info">
+                                    <h5><%= recruiter.profile_type %> ,</h5>
+                                    <h6><%= recruiter.location[0] %></h6>
+                                </div>
+                                <div class="id_details">
+                                    <div><i class="fas fa-address-card"></i><%= recruiter._id %></div>
+                                    <div><i class="fas fa-briefcase"></i><%= recruiter.experience_level %></div>
+                                </div>
+                            </div>
+                        <% } %>
+                    <% } else { %>
+                        <h3>No Recruiters!</h3>
+                    <% } %>
+                </div>
+<%- include('./includes/template-end.ejs') %>

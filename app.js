@@ -5,8 +5,8 @@ const jwt = require('jsonwebtoken');
 const path = require('path');
 
 const loginRoutes = require('./routes/login');
-//const amController = require('./routes/accountManager'); //Account Manager Controllers
-//const rController = require('./routes/recruiter'); // Recruiter Controllers
+const amRoutes = require('./routes/accountManager'); //Account Manager Controllers
+const rRoutes = require('./routes/recruiter'); // Recruiter Controllers
 
 require("dotenv").config({
     path: path.join(__dirname, "./.env")
@@ -22,6 +22,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(loginRoutes);
+app.use(amRoutes);
+app.use(rRoutes);
 //app.use('/', errorController.get404Page);
 
 const PORT = process.env.PORT || 2000;

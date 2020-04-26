@@ -52,7 +52,7 @@ exports.postRSignin = (req, res, next) => {
                 return res.render('login', {pageTitle: 'Recruiter Sign In', email:false, pw:true});
             }
             console.log("The email and password combination is correct!");
-            res.render('dashboard', {pageTitle:'Dashboard'});
+            res.render('dashboard', {pageTitle:'Dashboard', user:result, role: 'recruiter' });
         })
         .catch(err => console.log(err));
 };
@@ -72,8 +72,15 @@ exports.postAMSignin = (req, res, next) => {
                     return res.render('login', {pageTitle: 'Account Manager Sign In', email:false, pw:true});
                 }
             }
+
+            req.user = result;
+            console.log(req.user);
             console.log("The email and password combination is correct!");
-            res.render('dashboard', {pageTitle:'Dashboard', am: result, role: 'account_manager'});
+            res.render('dashboard', {pageTitle:'Dashboard', user: result, role: 'account_manager'});
         })
         .catch(err => console.log(err));
 };
+
+exports.getDashboard = (req, res, next) => {
+    
+}
