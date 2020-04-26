@@ -63,7 +63,7 @@ exports.postAMSignin = (req, res, next) => {
     AccountManager.findOne({email: email})
         .then(result => {
             if(!result) {
-                console.log(result.password);
+                //console.log(result.password);
                 return res.render('login', {pageTitle: 'Account Manager Sign In', email:true, pw:false});
             }
             if(result) {
@@ -73,7 +73,7 @@ exports.postAMSignin = (req, res, next) => {
                 }
             }
             console.log("The email and password combination is correct!");
-            res.render('dashboard', {pageTitle:'Dashboard'});
+            res.render('dashboard', {pageTitle:'Dashboard', am: result, role: 'account_manager'});
         })
         .catch(err => console.log(err));
 };
