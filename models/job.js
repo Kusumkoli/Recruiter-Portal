@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const jobSchema = new Schema({
-    job_title: {
+    title: {
         type: String,
         required: true
     },
@@ -26,7 +26,7 @@ const jobSchema = new Schema({
         type: String,
         required: true
     },
-    job_type: {
+    type: {
         type: String,
         enum: ['Full Time', 'Part Time', 'Work from Home']
     },
@@ -37,7 +37,7 @@ const jobSchema = new Schema({
     salary: {
         type: String,
         required: true
-    },
+    }
 });
 
 module.exports = mongoose.model('Job', jobSchema);

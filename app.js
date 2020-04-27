@@ -24,7 +24,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(loginRoutes);
 app.use(amRoutes);
 app.use(rRoutes);
-//app.use('/', errorController.get404Page);
+// app.use('/', errorController.get404Page);
 
 const PORT = process.env.PORT || 2000;
 

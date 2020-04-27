@@ -1,7 +1,9 @@
-const AccountManager = require('../models/accountManager');
-const Recruiter = require('../models/recruiter');
 const Bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+
+const AccountManager = require('../models/accountManager');
+const Recruiter = require('../models/recruiter');
+const Job = require('../models/job');
 
 exports.getLogin = (req, res, next) => {
     res.render('login', {pageTitle: 'Recruiter Sign In', email:false, pw:false});
@@ -51,8 +53,11 @@ exports.postRSignin = (req, res, next) => {
             if(!Bcrypt.compareSync(password, result.password)) {
                 return res.render('login', {pageTitle: 'Recruiter Sign In', email:false, pw:true});
             }
+
+            req.user = result;
+            console.log("User details :" + req.user);
             console.log("The email and password combination is correct!");
-            res.render('dashboard', {pageTitle:'Dashboard', user:result, role: 'recruiter' });
+            res.render('dashboard', {pageTitle:'Dashboard', user:req.user, role: 'recruiter' });
         })
         .catch(err => console.log(err));
 };
@@ -74,13 +79,18 @@ exports.postAMSignin = (req, res, next) => {
             }
 
             req.user = result;
-            console.log(req.user);
+            console.log("User details :" + req.user);
             console.log("The email and password combination is correct!");
-            res.render('dashboard', {pageTitle:'Dashboard', user: result, role: 'account_manager'});
+            Job.find()
+                .then(jobs => {
+                    Recruiter.find()
+                        .then(recruiters => {
+                            res.render('dashboard', {pageTitle:'Dashboard', jobs: jobs, recruiters: recruiters, user: req.user, role: 'account_manager'});
+                        })
+                        .catch(err => console.log(err));    
+                })
+                .catch(err => console.log(err));
         })
         .catch(err => console.log(err));
 };
 
-exports.getDashboard = (req, res, next) => {
-    
-}
